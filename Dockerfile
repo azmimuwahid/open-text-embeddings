@@ -26,6 +26,7 @@ ARG MODEL
 RUN mkdir -p ${MODEL}
 COPY --from=build-image ${MODEL} ${MODEL}
 RUN pip install --upgrade pip setuptools && \
-    pip install --no-cache-dir open-text-embeddings[server] mangum
+    pip install --no-cache-dir open-text-embeddings[server] mangum \
+    pip install -U sentence-transformers==2.2.2
 
 CMD [ "open.text.embeddings.server.aws.handler" ]
