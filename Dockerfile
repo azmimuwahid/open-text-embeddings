@@ -27,6 +27,8 @@ RUN mkdir -p ${MODEL}
 COPY --from=build-image ${MODEL} ${MODEL}
 RUN pip install --upgrade pip setuptools && \
     pip install --no-cache-dir open-text-embeddings[server] mangum \
-    pip install -U sentence-transformers==2.2.2
+    pip install -U sentence-transformers==2.2.2 \
+    pip install InstructorEmbedding \
+    pip install transformers
 
 CMD [ "open.text.embeddings.server.aws.handler" ]
